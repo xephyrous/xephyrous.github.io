@@ -92,15 +92,77 @@ function initStars() {
   )
 }
 
-window.onload = function () {
-  initASCIIButtons();
-  initStars();
-};
-
 const delay = (delayInms) => {
   return new Promise(resolve => setTimeout(resolve, delayInms));
 };
 
 function execCommand(command) {
   // TODO(This whole thing :|)
+}
+
+/**
+ * Dynamically loads in project cards from projectSettings.json
+ * @param container The project table to insert into
+ */
+function loadProjects(container) {
+  fetch('../projects/projectSettings.json')
+    .then(response => response.json())
+    .then(data => {
+      const projects = data["projects"];
+      let currProjNum = 0;
+
+      for (let i = 0; i < Math.ceil(projects.length / 2); i++) {
+        const newRow = container.appendChild(document.createElement("div"));
+
+        newRow.classList.add("row");
+
+        if (i === Math.ceil(projects.length / 2) - 1 && projects.length % 2 !== 0) {
+          newRow.classList.add("single");
+        }
+      }
+
+      projects.forEach(currProjJSON => {
+        const projRow = container.childNodes[Math.ceil(currProjNum / 2)];
+        currProjNum++;
+
+        const newProj = projRow.appendChild(document.createElement("div"));
+        newProj.classList.add("square");
+
+        const projImage = newProj.appendChild(document.createElement("img"));
+        projImage.src = `../img/${currProjJSON.image}`;
+        projImage.alt = `${currProjJSON.name} Project Image`;
+        projImage.style.width = "100%";
+        projImage.style.height = "auto";
+        projImage.style.padding = "5px";
+        projImage.style.paddingTop = "15px";
+
+        const decLine = newProj.appendChild(document.createElement("div"));
+        decLine.style.height = "2px";
+        decLine.style.border = "2px solid #e5d37e";
+
+        const descBox = newProj.appendChild(document.createElement("div"))
+        descBox.style.flexGrow = "1";
+        descBox.style.overflowY = "auto";
+
+        const description = descBox.appendChild(document.createElement("p"));
+        description.classList.add("terminalText");
+        description.innerText = currProjJSON.description;
+        description.style.paddingLeft = "15px";
+        description.style.paddingRight = "15px";
+
+        const wrapper = newProj.appendChild(document.createElement("div"));
+        wrapper.style.textAlign = "center";
+
+        const projBtn = wrapper.appendChild(document.createElement("input"));
+        projBtn.classList.add("asciiButton", "rowButton");
+        projBtn.type = "button";
+        projBtn.value = `[ ${currProjJSON.name.toUpperCase()} ]`;
+        projBtn.addEventListener("click", () => {
+          location.href = `../projects/${currProjJSON.project}/${currProjJSON.entrypoint}`;
+        })
+      })
+    })
+    .catch(error => {
+      console.error('Error Handling projectSettings.json:', error);
+    });
 }

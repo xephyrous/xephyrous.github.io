@@ -274,12 +274,26 @@ input:focus{
 }
 
 .asciiButton {
+  position: relative;
+  z-index: 1000;
   padding: 0;
   border: none;
   background: none;
   font-family: "Fira Code", monospace;
   font-weight: bold;
   color: #e5d37e;
+  transition: background-color 0.2s, color 0.1s;
+  pointer-events: all;
+}
+
+.asciiButton:hover {
+  background-color: #e5d37e;
+  color: #2d2a2e;
+}
+
+.asciiButton:active {
+  background-color: #e5d37e;
+  color: #ffffff;
 }
 
 .terminalText {
@@ -294,6 +308,7 @@ input:focus{
 }
 
 .starryBackground {
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -308,7 +323,7 @@ input:focus{
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .locationBox {
@@ -321,4 +336,48 @@ body {
 .terminalInput {
   background: none;
   border: none;
+}
+
+.table-container {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  height: calc(40vw / 2);
+}
+
+.row.single {
+  justify-content: center;
+}
+
+.square {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-right: 16px;
+  border: 2px solid #e5d37e;
+  outline: 2px solid #e5d37e;
+  outline-offset: 2px;
+}
+
+.square::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.square:last-child {
+  margin-right: 0;
 }

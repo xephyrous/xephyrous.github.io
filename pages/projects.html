@@ -26,10 +26,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body onload="
+loadProjects(document.getElementById('projectsTable'))
+initASCIIButtons();
+initStars();
+">
 <div class="starryBackground"></div>
 
-<div style="z-index: 100">
+<div>
   <div class="centerHoriz mainLogo inner">
       <pre id="logo"  style="color: #e5d37e">
 ██   ██ ███████ ██████  ██   ██ ██    ██ ██████   ██████  ██    ██ ███████
@@ -70,6 +74,8 @@
       ∷
     </span>
 </div>
+
+<div class="table-container centerHoriz" style="padding-top: 300px" id="projectsTable"></div>
 
 <label class="terminalTextBold locationBox">
   ]><input id="locationInput" class="terminalInput terminalTextBold" type="text" onsubmit="execCommand(this.value)" value=""/>
