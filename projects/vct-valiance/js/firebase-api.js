@@ -1,8 +1,8 @@
-import { getSHA256Hash } from "boring-webcrypto-sha256";
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get, update } from "firebase/database";
-import { getAuth, signInAnonymously } from "firebase/auth";
-
+import {getSHA256Hash} from "boring-webcrypto-sha256";
+import {initializeApp} from "firebase/app";
+import {get, getDatabase, ref, set} from "firebase/database";
+import {getAuth, signInAnonymously} from "firebase/auth";
+import {teamDataToJSON} from "./js-utils";
 
 
 let sessionUUID = "";
@@ -27,7 +27,6 @@ async function initializeFirebase() {
     database = getDatabase(app);
     auth = getAuth(app);
     await signInAnonymously(auth);
-    return ""
 }
 
 /**
@@ -57,9 +56,9 @@ function setSessionUUID(uuid) {
 async function createUser() {
     await set(ref(database, `users/${sessionUUID}`), {
         lastAccess: Date.now(),
-        systemMessages: [""],
         userMessages: [""],
-        teams: [""]
+        systemMessages: [""],
+        teams: [""],
     });
 }
 
@@ -90,36 +89,91 @@ async function addMessage(message, role) {
 }
 
 /**
- * Adds a team object to the database
- * @param teamObj
- * @returns {Promise<void>}
+ * Clears all chat messages
  */
-async function addTeam(teamObj) {
-    var jsonObj = JSON.parse(teamObj)
+async function clearMessages() {
+    await set(ref(database, `users/${sessionUUID}/userMessages`), [""]);
+    await set(ref(database, `users/${sessionUUID}/systemMessages`), [""]);
+}
 
-    if ( // Validate JSON fields
-        !jsonObj.hasOwnProperty("name")
-         || !jsonObj.hasOwnProperty("members")
-         || !jsonObj.hasOwnProperty("roles")
-         || !jsonObj.hasOwnProperty("agents")
-         || !jsonObj.hasOwnProperty("theme")
-    ) { throw Error("") }
-
-    if ( // Validate field entries
-        jsonObj["name"] === ""
-         || jsonObj["members"].length !== 5
-         || jsonObj["roles"].length !== 5
-         || jsonObj["agents"].length !== 5
-         || jsonObj["theme"].length !== 3 // TODO("Update based on theme components")
-    ) { throw Error("") }
+/**
+ * Adds a team object to the database
+ * @param rawString The model response containing the team data
+ */
+async function addTeam(rawString) {
+    const teamJSON = teamDataToJSON(rawString, false);
+    teamJSON["uuid"] = await calculateSessionUUID();
 
     const teamsList = await get(ref(database, `users/${sessionUUID}/teams`))
         .then(snapshot => {
             return snapshot.val()
         })
 
-    teamsList.push(jsonObj)
+    teamsList.push(teamJSON)
     await set(ref(database, `users/${sessionUUID}/teams`), teamsList)
+}
+
+/**
+ * Gets all stored team names for the current user
+ */
+async function getTeamNames() {
+    const jsonStr = '{"names": []}';
+    let jsonObj = JSON.parse(jsonStr);
+
+    const teamsList = await get(ref(database, `users/${sessionUUID}/teams`))
+        .then(snapshot => {
+            return snapshot.val()
+        })
+
+    teamsList.forEach((value) => {
+        jsonObj.names.push(value["name"]);
+    });
+
+    return jsonObj;
+}
+
+/**
+ * Gets all stored team UUIDs for the current user
+ */
+async function getTeamUUIDs() {
+    const jsonStr = '{"uuids": []}';
+    let jsonObj = JSON.parse(jsonStr);
+
+    const teamsList = await get(ref(database, `users/${sessionUUID}/teams`))
+        .then(snapshot => {
+            return snapshot.val()
+        })
+
+    teamsList.forEach((value) => {
+        jsonObj.uuids.push(value["uuid"]);
+    });
+
+    return jsonObj;
+}
+
+/**
+ * Gets a team object from the database list with the provided UUID
+ * @param uuid The UUID of the team object to retrieve
+ */
+async function getTeamByUUID(uuid) {
+    const teamsList = await get(ref(database, `users/${sessionUUID}/teams`))
+        .then(snapshot => { return snapshot.val() })
+
+    let obj = null;
+
+    teamsList.forEach((value) => {
+        if (value["uuid"] === uuid) { obj = value; }
+    });
+
+    return JSON.stringify(obj);
+}
+
+/**
+ * Gets all system and user messages of the current session
+ */
+async function getMessages() {
+    return await get(ref(database, `users/${sessionUUID}`))
+        .then(snapshot => { return snapshot.val() })
 }
 
 /**
@@ -145,8 +199,14 @@ export {
     setSessionUUID,
     addMessage,
     addTeam,
+    getTeamNames,
+    getTeamByUUID,
+    updateAccessTime,
+    getMessages,
+    getTeamUUIDs,
+    clearMessages,
     sessionUUID,
 
-    // Debug only!
+    // TODO : Debug only!
     debug,
 };
