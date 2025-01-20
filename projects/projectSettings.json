@@ -6,6 +6,13 @@
       "image": "valiance_ascii.png",
       "project": "vct-valiance",
       "entrypoint": "index.html"
+    },
+    {
+      "name": "Data Trek",
+      "description": "Love Data 2025 submission.",
+      "image": "NONE",
+      "project": "data-trek",
+      "entrypoint": "index.html"
     }
   ]
 }

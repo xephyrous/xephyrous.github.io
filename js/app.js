@@ -128,13 +128,23 @@ function loadProjects(container) {
         const newProj = projRow.appendChild(document.createElement("div"));
         newProj.classList.add("square");
 
-        const projImage = newProj.appendChild(document.createElement("img"));
-        projImage.src = `../img/${currProjJSON.image}`;
-        projImage.alt = `${currProjJSON.name} Project Image`;
-        projImage.style.width = "100%";
-        projImage.style.height = "auto";
-        projImage.style.padding = "5px";
-        projImage.style.paddingTop = "15px";
+        let projImage;
+        if (currProjJSON.image === "NONE") { // No image, project name
+          projImage = newProj.appendChild(document.createElement("p"));
+          projImage.innerText = currProjJSON.name;
+          projImage.style.width = "100%";
+          projImage.style.height = "auto";
+          projImage.style.padding = "5px";
+          projImage.style.paddingTop = "15px";
+        } else { // Specified image file
+          projImage = newProj.appendChild(document.createElement("img"));
+          projImage.src = `../img/${currProjJSON.image}`;
+          projImage.alt = `${currProjJSON.name} Project Image`;
+          projImage.style.width = "100%";
+          projImage.style.height = "auto";
+          projImage.style.padding = "5px";
+          projImage.style.paddingTop = "15px";
+        }
 
         const decLine = newProj.appendChild(document.createElement("div"));
         decLine.style.height = "2px";
