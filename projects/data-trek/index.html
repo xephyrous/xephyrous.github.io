@@ -1,0 +1,82 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <title>Trees~n~Stuff</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="theme-color" content="#fafafa">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <meta property="og:image:alt" content="">
+
+  <link rel="stylesheet" href="css/baseStyle.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cursors.css">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body onload="
+  loadVineBorders();
+  setupStates();
+">
+
+  <!-- Loading Overlay -->
+  <div id="overlay" class="center-text">
+    <p style="color: white">Loading...</p>
+  </div>
+
+  <!-- Vine Borders -->
+  <canvas id="top"></canvas>
+  <canvas id="bottom"></canvas>
+  <canvas id="left"></canvas>
+  <canvas id="right"></canvas>
+
+  <div class="map">
+    <!-- A silly method of sizing and positioning the states, based off of the sizing of the map -->
+    <!-- The states size and position themselves off of this element, as it is a known total size & position -->
+    <!-- Since the map will already be sized and positioned to fit nicely in the div, the states can be proportioned -->
+    <!-- to match! This also masks the many pixel positioning inconsistencies 😁 (no good, very bad code) -->
+    <img id="map" src="img/us_map_highres_shadow.png" alt="US Map">
+
+    <!-- States -->
+    <img id="washington"    src="img/states/washington.png"   alt="Washington"    class="state shown">
+    <img id="oregon"        src="img/states/oregon.png"       alt="Oregon"        class="state shown">
+    <img id="california"    src="img/states/california.png"   alt="California"    class="state shown">
+    <img id="nevada"        src="img/states/nevada.png"       alt="Nevada"        class="state shown">
+    <img id="idaho"         src="img/states/idaho.png"        alt="Idaho"         class="state shown">
+    <img id="montana"       src="img/states/montana.png"      alt="Montana"       class="state shown">
+    <img id="utah"          src="img/states/utah.png"         alt="Utah"          class="state shown">
+    <img id="arizona"       src="img/states/arizona.png"      alt="Arizona"       class="state shown">
+    <img id="colorado"      src="img/states/colorado.png"     alt="Colorado"      class="state shown">
+    <img id="new_mexico"    src="img/states/new_mexico.png"   alt="New Mexico"    class="state shown front">
+    <img id="wyoming"       src="img/states/wyoming.png"      alt="Wyoming"       class="state shown">
+    <img id="north_dakota"  src="img/states/north_dakota.png" alt="North Dakota"  class="state shown">
+    <img id="south_dakota"  src="img/states/south_dakota.png" alt="South Dakota"  class="state shown">
+    <img id="nebraska"      src="img/states/nebraska.png"     alt="Nebraska"      class="state shown">
+    <img id="kansas"        src="img/states/kansas.png"       alt="Kansas"        class="state shown">
+    <img id="oklahoma"      src="img/states/oklahoma.png"     alt="Oklahoma"      class="state shown front">
+    <img id="texas"         src="img/states/texas.png"        alt="Texas"         class="state shown back">
+    <img id="minnesota"     src="img/states/minnesota.png"    alt="Minnesota"     class="state shown">
+    <img id="iowa"          src="img/states/iowa.png"         alt="Iowa"          class="state shown">
+    <img id="missouri"      src="img/states/missouri.png"     alt="Missouri"      class="state shown">
+    <img id="arkansas"      src="img/states/arkansas.png"     alt="Arkansas"      class="state shown">
+    <img id="louisiana"     src="img/states/louisiana.png"    alt="Louisiana"     class="state shown">
+  </div>
+
+</body>
+
+</html>

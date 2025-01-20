@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'PixelFont';
+  src: url('../fonts/PixelMplus10-Regular.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'PixelFont';
+  src: url('../fonts/PixelMplus10-Bold.ttf');
+  font-stretch: expanded; /* This bold font is very packed together, so we have to make it readable */
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'OutlineFont';
+  src: url('../fonts/fipps-regular.otf');
+}
+
+/* Disable antialiasing */
+/* https://stackoverflow.com/questions/14068103/disable-antialising-when-scaling-images */
+img {
+  image-rendering: optimizeSpeed;             /* STOP SMOOTHING, GIVE ME SPEED  */
+  image-rendering: -moz-crisp-edges;          /* Firefox                        */
+  image-rendering: -o-crisp-edges;            /* Opera                          */
+  image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+  image-rendering: pixelated;                 /* Universal support since 2021   */
+  image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
+  -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
+  image-rendering: pixelated
+}
+
+html, body {
+  font-family: 'PixelFont', sans-serif;
+  font-weight: normal;
+  font-size: 1.15em;
+  overflow: hidden;
+  background-color: #4F7942;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 1);
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.center-text {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100vh;
+}
+
+.outline-text {
+  font-family: 'OutlineFont', sans-serif;
+}
+
+/* Cursor stalker styling from zutomayomart.net */
+.star {
+  position: fixed;
+  top: -15px;
+  left: -15px;
+  width: 5px;
+  height: 5px;
+  background-color: #3498db;
+  z-index: 2000;
+  animation: star 2s ease-out forwards;
+}
+
+@keyframes star {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+
+  5% {
+    transform: scale(0.8);
+  }
+
+  80% {
+    transform: scale(0.6);
+  }
+
+  100% {
+    transform: scale(0.2);
+  }
+}
+
+canvas {
+  position: absolute;
+}
+
+.map {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  width: 70%;
+  height: 70%;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#map {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: opacity 0.75s ease;
+}
+
+.state {
+  opacity: 1;
+  position: absolute;
+  height: auto;
+  transition: transform 0.3s ease, top 1s ease-in-out, left 1s ease-in-out, opacity 0.75s ease;
+}
+
+.state:hover {
+  transform: scale(1.1);
+  z-index: 1000;
+}
+
+.state:active {
+  transform: scale(1.05);
+  z-index: 1000;
+  transition: transform 0.1s ease;
+}
+
+.back { z-index: 0; }
+.middle { z-index: 11; }
+.front { z-index: 12; }
+
+#top {
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+#bottom {
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
+
+#left {
+  top: 0;
+  left: -10px;
+  width: 30px;
+  height: 100%;
+}
+
+#right {
+  top: 0;
+  right: -10px;
+  width: 30px;
+  height: 100%;
+}

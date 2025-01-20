@@ -1,0 +1,52 @@
+/* Base */
+html, body {
+  cursor: url("../img/cursors/arrow_cursor.ico"), default;
+}
+
+/* Hover/interact */
+button, input, select, textarea {
+  cursor: url("../img/cursors/link_cursor.ico"), pointer;
+}
+
+/* Disabled */
+button:disabled, input:disabled, select:disabled, textarea:disabled {
+  cursor: url("../img/cursors/x_cursor.ico"), not-allowed;
+}
+
+/* Horizontal Sliders */
+input[type="range"]::-webkit-slider-thumb {
+  cursor: url("../img/cursors/ew_cursor.ico"), pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  cursor: url("../img/cursors/ew_cursor.ico"), default;
+}
+
+/* Horizontal Sliders Mozilla Fallback */
+input[type="range"]::-moz-range-thumb {
+  cursor: url("../img/cursors/ew_cursor.ico"), pointer;
+}
+input[type="range"]::-moz-range-track {
+  cursor: url("../img/cursors/ew_cursor.ico"), default;
+}
+
+/* Horizontal Sliders Explorer/Edge Fallback */
+input[type="range"]::-ms-thumb {
+  cursor: url("../img/cursors/ew_cursor.ico"), pointer;
+}
+input[type="range"]::-ms-track {
+  cursor: url("../img/cursors/ew_cursor.ico"), default;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar-thumb {
+  cursor: url("../img/cursors/ns_cursor.ico"), grab;
+}
+
+::-webkit-scrollbar-track {
+  cursor: url("../img/cursors/ns_cursor.ico"), default;
+}
+
+::-webkit-scrollbar {
+  cursor: url("../img/cursors/ns_cursor.ico"), default;
+}
