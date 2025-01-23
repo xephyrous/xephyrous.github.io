@@ -10,7 +10,7 @@
     {
       "name": "Data Trek",
       "description": "Love Data 2025 submission.",
-      "image": "NONE",
+      "image": "win_tree.png",
       "project": "data-trek",
       "entrypoint": "index.html"
     }

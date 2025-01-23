@@ -111,9 +111,9 @@ function loadProjects(container) {
       const projects = data["projects"];
       let currProjNum = 0;
 
+      // Create rows
       for (let i = 0; i < Math.ceil(projects.length / 2); i++) {
         const newRow = container.appendChild(document.createElement("div"));
-
         newRow.classList.add("row");
 
         if (i === Math.ceil(projects.length / 2) - 1 && projects.length % 2 !== 0) {
@@ -121,8 +121,10 @@ function loadProjects(container) {
         }
       }
 
+      // Append projects to rows
       projects.forEach(currProjJSON => {
-        const projRow = container.childNodes[Math.ceil(currProjNum / 2)];
+        // Get the current row (which should have two projects or one in the last row)
+        const projRow = container.childNodes[Math.floor(currProjNum / 2)];
         currProjNum++;
 
         const newProj = projRow.appendChild(document.createElement("div"));
@@ -142,6 +144,8 @@ function loadProjects(container) {
           projImage.alt = `${currProjJSON.name} Project Image`;
           projImage.style.width = "100%";
           projImage.style.height = "auto";
+          projImage.style.maxHeight = "50%";  // Limit the height to 50% of the card
+          projImage.style.objectFit = "cover"; // Ensures image aspect ratio is maintained
           projImage.style.padding = "5px";
           projImage.style.paddingTop = "15px";
         }
@@ -150,7 +154,7 @@ function loadProjects(container) {
         decLine.style.height = "2px";
         decLine.style.border = "2px solid #e5d37e";
 
-        const descBox = newProj.appendChild(document.createElement("div"))
+        const descBox = newProj.appendChild(document.createElement("div"));
         descBox.style.flexGrow = "1";
         descBox.style.overflowY = "auto";
 
@@ -169,8 +173,8 @@ function loadProjects(container) {
         projBtn.value = `[ ${currProjJSON.name.toUpperCase()} ]`;
         projBtn.addEventListener("click", () => {
           location.href = `../projects/${currProjJSON.project}/${currProjJSON.entrypoint}`;
-        })
-      })
+        });
+      });
     })
     .catch(error => {
       console.error('Error Handling projectSettings.json:', error);
