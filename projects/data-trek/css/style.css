@@ -340,13 +340,13 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   transition: opacity 0.75s ease;
 }
 
 #nat-ot {
   height: 90%;
   width: auto;
-  object-fit: contain;
 }
 
 #nat-ann {

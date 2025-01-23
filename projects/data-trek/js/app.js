@@ -465,16 +465,9 @@ function fadeUI(text) {
 
 function fadeNationalUI() {
   const box = document.getElementById('national-box');
-  if (box.style.opacity === "1") {
-    box.style.opacity = "0";
-    setTimeout(() => {
-      box.style.display = "none";
-    }, 900);
-    return;
-  }
-
-  box.style.opacity = "1";
-  box.style.display = "block";
+  box.style.opacity = box.style.opacity === "1" ? "0" : "1";
+  box.style.visibility = box.style.visibility === "visible" ? "hidden" : "visible";
+  box.style.pointerEvents = box.style.pointerEvents === "all" ? "none" : "all";
 }
 
 function addToList(itemText) {
