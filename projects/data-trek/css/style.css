@@ -26,7 +26,8 @@ img {
   image-rendering: pixelated;                 /* Universal support since 2021   */
   image-rendering: optimize-contrast;         /* CSS3 Proposed                  */
   -ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
-  image-rendering: pixelated
+  image-rendering: pixelated;
+  color: black;
 }
 
 html, body {
@@ -38,6 +39,39 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+button {
+  background-color: transparent;
+  border: 4px black dashed;
+  font-family: 'PixelFont', sans-serif;
+  font-weight: normal;
+  font-size: 1.15em;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  font-size: 1.20em;
+}
+
+button:active {
+  font-size: 1.10em;
+}
+
+li {
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+img {
+  color: black;
+}
+
+.no-pix {
+  all: unset;
 }
 
 #overlay {
@@ -119,7 +153,7 @@ canvas {
 
 .state {
   opacity: 1;
-  z-index: 2;
+  z-index: 5;
   position: absolute;
   height: auto;
   transition: transform 0.3s ease, top 1s ease-in-out, left 1s ease-in-out, opacity 0.75s ease;
@@ -136,7 +170,7 @@ canvas {
   transition: transform 0.1s ease;
 }
 
-.back { z-index: 1; }
+.back { z-index: 2; }
 .middle { z-index: 11; }
 .front { z-index: 12; }
 
@@ -170,10 +204,13 @@ canvas {
 
 #state-info {
   position: absolute;
-  top: 40px;
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  top: 90px;
   left: calc(60px + max(17vw, 20vh));
   width: calc(100% - max(17vw, 20vh) - 100px);
-  height: calc(100% - 80px);
+  height: calc(100% - 130px);
   border: 4px black dashed;
 }
 
@@ -186,12 +223,12 @@ canvas {
   border: 4px black dashed;
   transition: opacity .75s ease;
   display: flex;
-  justify-content: center;  /* Center horizontally */
-  align-items: center;      /* Center vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 #state-name {
-  width: max(25vw, 35vh);
+  width: max(17vw, 20vh);
   height: 50px;
   color: white;
   position: absolute;
@@ -200,14 +237,95 @@ canvas {
   text-shadow: -2px 2px 0 #000;
   margin-top: auto;
   text-align: center;
-  width: 100%; /* Ensures the text takes up the full width of the container */
-  height: 100%; /* Ensures the text takes up the full height of the container */
-  max-height: 50px; /* Prevents the text from exceeding 50px in height */
-  overflow: hidden; /* Avoids text overflow */
-  white-space: nowrap; /* Prevents text wrapping */
-  font-size: calc(1vw + 1vh); /* Adjusts text size based on container width */
+  max-height: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: calc(1vw + 1vh);
 }
 
-#state-info {
+#info-main {
+  width: 50%;
+  height: calc(100% - 40px);
+  text-align: center;
+}
+
+#info-graph {
+  width: 50%;
+  height: 100%;
+  border-left: 4px black dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#state-graph {
+  max-width: 100%;
+}
+
+#return-button {
+  width: max(17vw, 20vh);
+  height: 40px;
+  position: absolute;
+  top: calc(max(17vw, 20vh) + 110px);
+  left: 40px;
+}
+
+#park-display {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   z-index: 0;
+}
+
+#park-graph {
+  width: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  z-index: -1;
+}
+
+#park-list-box {
+  height: 25%;
+  width: 100%;
+  overflow-y: auto !important;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+#main-title {
+  font-size: 2em;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+#main-title p {
+  margin: 0;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  text-shadow: -4px 4px 0 black;
+}
+
+#national-data {
+  position: absolute;
+  bottom: 40px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.75s ease;
 }

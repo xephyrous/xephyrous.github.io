@@ -1,0 +1,56 @@
+ParkName,Region,State,Year,RecreationVisits
+Great Smoky Mountains NP,Southeast,TN,1981,8312884
+Acadia NP,Northeast,ME,1981,2997972
+Rocky Mountain NP,Intermountain,CO,1981,2911242
+Grand Teton NP,Intermountain,WY,1981,2643644
+Yellowstone NP,Intermountain,WY,1981,2521831
+Yosemite NP,Pacific West,CA,1981,2516893
+Grand Canyon NP,Intermountain,AZ,1981,2472270
+Olympic NP,Pacific West,WA,1981,2306032
+Gateway Arch NP,Midwest,MO,1981,2282261
+Hawaii Volcanoes NP,Pacific West,HI,1981,1931852
+Shenandoah NP,Northeast,VA,1981,1819546
+Glacier NP,Intermountain,MT,1981,1786523
+Mammoth Cave NP,Southeast,KY,1981,1404317
+Zion NP,Intermountain,UT,1981,1288808
+Mount Rainier NP,Pacific West,WA,1981,1233671
+Hot Springs NP,Midwest,AR,1981,1177911
+Badlands NP,Midwest,SD,1981,1175952
+Sequoia NP,Pacific West,CA,1981,1083002
+Indiana Dunes NP,Midwest,IN,1981,1023436
+North Cascades NP,Pacific West,WA,1981,829026
+Kings Canyon NP,Pacific West,CA,1981,776850
+Carlsbad Caverns NP,Intermountain,NM,1981,771766
+Petrified Forest NP,Intermountain,AZ,1981,747832
+Theodore Roosevelt NP,Midwest,ND,1981,702873
+Haleakala NP,Pacific West,HI,1981,631684
+Death Valley NP,Pacific West,CA,1981,630402
+Joshua Tree NP,Pacific West,CA,1981,612966
+Cuyahoga Valley NP,Midwest,OH,1981,596300
+Mesa Verde NP,Intermountain,CO,1981,588608
+Virgin Islands NP,Southeast,VI,1981,566528
+Everglades NP,Southeast,FL,1981,564721
+White Sands NP,Intermountain,NM,1981,556494
+Redwood NP,Pacific West,CA,1981,549461
+Wind Cave NP,Midwest,SD,1981,503424
+Crater Lake NP,Pacific West,OR,1981,503404
+Bryce Canyon NP,Intermountain,UT,1981,474092
+Saguaro NP,Intermountain,AZ,1981,470598
+Lassen Volcanic NP,Pacific West,CA,1981,415045
+Capitol Reef NP,Intermountain,UT,1981,397789
+Arches NP,Intermountain,UT,1981,326508
+Biscayne NP,Southeast,FL,1981,305502
+Black Canyon of the Gunnison NP,Intermountain,CO,1981,266604
+Voyageurs NP,Midwest,MN,1981,257490
+Denali NP & PRES,Alaska,AK,1981,256593
+Great Sand Dunes NP & PRES,Intermountain,CO,1981,172505
+Big Bend NP,Intermountain,TX,1981,167332
+Pinnacles NP,Pacific West,CA,1981,155205
+Guadalupe Mountains NP,Intermountain,TX,1981,142641
+Canyonlands NP,Intermountain,UT,1981,89915
+Channel Islands NP,Pacific West,CA,1981,87514
+Glacier Bay NP & PRES,Alaska,AK,1981,85071
+Great Basin NP,Pacific West,NV,1981,33367
+Isle Royale NP,Midwest,MI,1981,14558
+Katmai NP & PRES,Alaska,AK,1981,13115
+Dry Tortugas NP,Southeast,FL,1981,10150

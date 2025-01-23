@@ -1,0 +1,61 @@
+ParkName,Region,State,Year,RecreationVisits
+Great Smoky Mountains NP,Southeast,TN,1983,8435475
+Acadia NP,Northeast,ME,1983,4124639
+Gateway Arch NP,Midwest,MO,1983,2948022
+Rocky Mountain NP,Intermountain,CO,1983,2599006
+Yosemite NP,Pacific West,CA,1983,2457464
+Olympic NP,Pacific West,WA,1983,2410722
+Yellowstone NP,Intermountain,WY,1983,2347242
+Grand Canyon NP,Intermountain,AZ,1983,2248082
+Hawaii Volcanoes NP,Pacific West,HI,1983,2247974
+Glacier NP,Intermountain,MT,1983,2203847
+Shenandoah NP,Northeast,VA,1983,1768378
+Grand Teton NP,Intermountain,WY,1983,1532035
+Indiana Dunes NP,Midwest,IN,1983,1510630
+Mammoth Cave NP,Southeast,KY,1983,1498503
+Zion NP,Intermountain,UT,1983,1273030
+Hot Springs NP,Midwest,AR,1983,1160008
+Mount Rainier NP,Pacific West,WA,1983,1106306
+Badlands NP,Midwest,SD,1983,1026981
+Cuyahoga Valley NP,Midwest,OH,1983,939562
+Haleakala NP,Pacific West,HI,1983,864289
+North Cascades NP,Pacific West,WA,1983,858041
+Sequoia NP,Pacific West,CA,1983,854233
+Kings Canyon NP,Pacific West,CA,1983,765755
+Carlsbad Caverns NP,Intermountain,NM,1983,712247
+Petrified Forest NP,Intermountain,AZ,1983,708512
+Virgin Islands NP,Southeast,VI,1983,676800
+Joshua Tree NP,Pacific West,CA,1983,671426
+Death Valley NP,Pacific West,CA,1983,635582
+Saguaro NP,Intermountain,AZ,1983,634688
+Mesa Verde NP,Intermountain,CO,1983,604115
+Everglades NP,Southeast,FL,1983,577439
+Wind Cave NP,Midwest,SD,1983,503739
+White Sands NP,Intermountain,NM,1983,492902
+Redwood NP,Pacific West,CA,1983,473711
+Bryce Canyon NP,Intermountain,UT,1983,472633
+Lassen Volcanic NP,Pacific West,CA,1983,429867
+Theodore Roosevelt NP,Midwest,ND,1983,415118
+Crater Lake NP,Pacific West,OR,1983,379008
+Biscayne NP,Southeast,FL,1983,369082
+Denali NP & PRES,Alaska,AK,1983,346082
+Capitol Reef NP,Intermountain,UT,1983,331734
+Black Canyon of the Gunnison NP,Intermountain,CO,1983,291618
+Arches NP,Intermountain,UT,1983,287875
+Channel Islands NP,Pacific West,CA,1983,205024
+Pinnacles NP,Pacific West,CA,1983,170631
+Big Bend NP,Intermountain,TX,1983,164926
+Great Sand Dunes NP & PRES,Intermountain,CO,1983,150177
+Voyageurs NP,Midwest,MN,1983,146454
+Guadalupe Mountains NP,Intermountain,TX,1983,142736
+Canyonlands NP,Intermountain,UT,1983,100022
+Glacier Bay NP & PRES,Alaska,AK,1983,92057
+Great Basin NP,Pacific West,NV,1983,30335
+Kenai Fjords NP,Alaska,AK,1983,24048
+Wrangell-St. Elias NP & PRES,Alaska,AK,1983,18760
+Isle Royale NP,Midwest,MI,1983,12928
+Lake Clark NP & PRES,Alaska,AK,1983,12332
+Katmai NP & PRES,Alaska,AK,1983,11182
+Dry Tortugas NP,Southeast,FL,1983,11004
+Kobuk Valley NP,Alaska,AK,1983,2365
+Gates of the Arctic NP & PRES,Alaska,AK,1983,2138

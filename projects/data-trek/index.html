@@ -32,6 +32,7 @@
 <body onload="
   loadVineBorders();
   setupStates();
+  generateStateData();
 ">
 
   <!-- Loading Overlay -->
@@ -45,6 +46,12 @@
   <canvas id="left"></canvas>
   <canvas id="right"></canvas>
 
+  <!-- Title -->
+  <div id="main-title">
+    <p>Across the US: Visiting our National Parks</p>
+  </div>
+
+  <!-- Interactive Map -->
   <div class="map">
     <!-- A silly method of sizing and positioning the states, based off of the sizing of the map -->
     <!-- The states size and position themselves off of this element, as it is a known total size & position -->
@@ -54,65 +61,87 @@
 
     <!-- States -->
     <!-- Convert into script-instantiated elements eventually -->
-    <img id="washington"      src="img/states/washington.png"       alt="Washington"      class="state">
-    <img id="oregon"          src="img/states/oregon.png"           alt="Oregon"          class="state">
-    <img id="california"      src="img/states/california.png"       alt="California"      class="state">
-    <img id="nevada"          src="img/states/nevada.png"           alt="Nevada"          class="state">
-    <img id="idaho"           src="img/states/idaho.png"            alt="Idaho"           class="state">
-    <img id="montana"         src="img/states/montana.png"          alt="Montana"         class="state">
-    <img id="utah"            src="img/states/utah.png"             alt="Utah"            class="state">
-    <img id="arizona"         src="img/states/arizona.png"          alt="Arizona"         class="state">
-    <img id="colorado"        src="img/states/colorado.png"         alt="Colorado"        class="state">
-    <img id="new_mexico"      src="img/states/new_mexico.png"       alt="New Mexico"      class="state front">
-    <img id="wyoming"         src="img/states/wyoming.png"          alt="Wyoming"         class="state">
-    <img id="north_dakota"    src="img/states/north_dakota.png"     alt="North Dakota"    class="state">
-    <img id="south_dakota"    src="img/states/south_dakota.png"     alt="South Dakota"    class="state">
-    <img id="nebraska"        src="img/states/nebraska.png"         alt="Nebraska"        class="state">
-    <img id="kansas"          src="img/states/kansas.png"           alt="Kansas"          class="state">
-    <img id="oklahoma"        src="img/states/oklahoma.png"         alt="Oklahoma"        class="state front">
-    <img id="texas"           src="img/states/texas.png"            alt="Texas"           class="state back">
-    <img id="minnesota"       src="img/states/minnesota.png"        alt="Minnesota"       class="state">
-    <img id="iowa"            src="img/states/iowa.png"             alt="Iowa"            class="state">
-    <img id="missouri"        src="img/states/missouri.png"         alt="Missouri"        class="state">
-    <img id="arkansas"        src="img/states/arkansas.png"         alt="Arkansas"        class="state">
-    <img id="louisiana"       src="img/states/louisiana.png"        alt="Louisiana"       class="state">
-    <img id="wisconsin"       src="img/states/wisconsin.png"        alt="Wisconsin"       class="state front">
-    <img id="illinois"        src="img/states/illinois.png"         alt="Illinois"        class="state front">
-    <img id="kentucky"        src="img/states/kentucky.png"         alt="Kentucky"        class="state">
-    <img id="tennessee"       src="img/states/tennessee.png"        alt="Tennessee"       class="state">
-    <img id="mississippi"     src="img/states/mississippi.png"      alt="Mississippi"     class="state">
-    <img id="indiana"         src="img/states/indiana.png"          alt="Indiana"         class="state">
-    <img id="michigan"        src="img/states/michigan.png"         alt="michigan"        class="state back">
-    <img id="alabama"         src="img/states/alabama.png"          alt="alabama"         class="state">
-    <img id="ohio"            src="img/states/ohio.png"             alt="ohio"            class="state">
-    <img id="georgia"         src="img/states/georgia.png"          alt="georgia"         class="state">
-    <img id="florida"         src="img/states/florida.png"          alt="florida"         class="state">
-    <img id="new_york"        src="img/states/new_york.png"         alt="new_york"        class="state back">
-    <img id="pennsylvania"    src="img/states/pennsylvania.png"     alt="pennsylvania"    class="state">
-    <img id="virginia"        src="img/states/virginia.png"         alt="virginia"        class="state">
-    <img id="north_carolina"  src="img/states/north_carolina.png"   alt="north_carolina"  class="state">
-    <img id="south_carolina"  src="img/states/south_carolina.png"   alt="south_carolina"  class="state">
-    <img id="maine"           src="img/states/maine.png"            alt="maine"           class="state">
-    <img id="new_hampshire"   src="img/states/new_hampshire.png"    alt="new_hampshire"   class="state front">
-    <img id="vermont"         src="img/states/vermont.png"          alt="vermont"         class="state front">
-    <img id="massachusetts"   src="img/states/massachusetts.png"    alt="massachusetts"   class="state back">
-    <img id="rhode_island"    src="img/states/rhode_island.png"     alt="rhode_island"    class="state front">
-    <img id="connecticut"     src="img/states/connecticut.png"      alt="connecticut"     class="state front">
-    <img id="new_jersey"      src="img/states/new_jersey.png"       alt="new_jersey"      class="state">
-    <img id="delaware"        src="img/states/delaware.png"         alt="delaware"        class="state front">
-    <img id="maryland"        src="img/states/maryland.png"         alt="maryland"        class="state back">
-    <img id="west_virginia"   src="img/states/west_virginia.png"    alt="west_virginia"   class="state">
-    <img id="alaska"          src="img/states/alaska.png"           alt="alaska"          class="state">
-    <img id="hawaii"          src="img/states/hawaii.png"           alt="hawaii"          class="state front">
+    <img id="washington"      src="img/states/washington.png"       alt="Washington"      class="state"       data-abbreviation="wa">
+    <img id="oregon"          src="img/states/oregon.png"           alt="Oregon"          class="state"       data-abbreviation="or">
+    <img id="california"      src="img/states/california.png"       alt="California"      class="state"       data-abbreviation="ca">
+    <img id="nevada"          src="img/states/nevada.png"           alt="Nevada"          class="state"       data-abbreviation="nv">
+    <img id="idaho"           src="img/states/idaho.png"            alt="Idaho"           class="state"       data-abbreviation="id">
+    <img id="montana"         src="img/states/montana.png"          alt="Montana"         class="state"       data-abbreviation="mt">
+    <img id="utah"            src="img/states/utah.png"             alt="Utah"            class="state"       data-abbreviation="ut">
+    <img id="arizona"         src="img/states/arizona.png"          alt="Arizona"         class="state"       data-abbreviation="az">
+    <img id="colorado"        src="img/states/colorado.png"         alt="Colorado"        class="state"       data-abbreviation="co">
+    <img id="new_mexico"      src="img/states/new_mexico.png"       alt="New Mexico"      class="state front" data-abbreviation="nm">
+    <img id="wyoming"         src="img/states/wyoming.png"          alt="Wyoming"         class="state"       data-abbreviation="wy">
+    <img id="north_dakota"    src="img/states/north_dakota.png"     alt="North Dakota"    class="state"       data-abbreviation="nd">
+    <img id="south_dakota"    src="img/states/south_dakota.png"     alt="South Dakota"    class="state"       data-abbreviation="sd">
+    <img id="nebraska"        src="img/states/nebraska.png"         alt="Nebraska"        class="state"       data-abbreviation="ne">
+    <img id="kansas"          src="img/states/kansas.png"           alt="Kansas"          class="state"       data-abbreviation="ks">
+    <img id="oklahoma"        src="img/states/oklahoma.png"         alt="Oklahoma"        class="state front" data-abbreviation="ok">
+    <img id="texas"           src="img/states/texas.png"            alt="Texas"           class="state back"  data-abbreviation="tx">
+    <img id="minnesota"       src="img/states/minnesota.png"        alt="Minnesota"       class="state"       data-abbreviation="mn">
+    <img id="iowa"            src="img/states/iowa.png"             alt="Iowa"            class="state"       data-abbreviation="ia">
+    <img id="missouri"        src="img/states/missouri.png"         alt="Missouri"        class="state"       data-abbreviation="mo">
+    <img id="arkansas"        src="img/states/arkansas.png"         alt="Arkansas"        class="state"       data-abbreviation="ar">
+    <img id="louisiana"       src="img/states/louisiana.png"        alt="Louisiana"       class="state"       data-abbreviation="la">
+    <img id="wisconsin"       src="img/states/wisconsin.png"        alt="Wisconsin"       class="state front" data-abbreviation="wi">
+    <img id="illinois"        src="img/states/illinois.png"         alt="Illinois"        class="state front" data-abbreviation="il">
+    <img id="kentucky"        src="img/states/kentucky.png"         alt="Kentucky"        class="state"       data-abbreviation="ky">
+    <img id="tennessee"       src="img/states/tennessee.png"        alt="Tennessee"       class="state"       data-abbreviation="tn">
+    <img id="mississippi"     src="img/states/mississippi.png"      alt="Mississippi"     class="state"       data-abbreviation="ms">
+    <img id="indiana"         src="img/states/indiana.png"          alt="Indiana"         class="state"       data-abbreviation="in">
+    <img id="michigan"        src="img/states/michigan.png"         alt="Michigan"        class="state back"  data-abbreviation="mi">
+    <img id="alabama"         src="img/states/alabama.png"          alt="Alabama"         class="state"       data-abbreviation="al">
+    <img id="ohio"            src="img/states/ohio.png"             alt="Ohio"            class="state"       data-abbreviation="oh">
+    <img id="georgia"         src="img/states/georgia.png"          alt="Georgia"         class="state"       data-abbreviation="ga">
+    <img id="florida"         src="img/states/florida.png"          alt="Florida"         class="state"       data-abbreviation="fl">
+    <img id="new_york"        src="img/states/new_york.png"         alt="New York"        class="state back"  data-abbreviation="ny">
+    <img id="pennsylvania"    src="img/states/pennsylvania.png"     alt="Pennsylvania"    class="state"       data-abbreviation="pa">
+    <img id="virginia"        src="img/states/virginia.png"         alt="Virginia"        class="state"       data-abbreviation="va">
+    <img id="north_carolina"  src="img/states/north_carolina.png"   alt="North Carolina"  class="state"       data-abbreviation="nc">
+    <img id="south_carolina"  src="img/states/south_carolina.png"   alt="South Carolina"  class="state"       data-abbreviation="sc">
+    <img id="maine"           src="img/states/maine.png"            alt="Maine"           class="state"       data-abbreviation="me">
+    <img id="new_hampshire"   src="img/states/new_hampshire.png"    alt="New Hampshire"   class="state front" data-abbreviation="nh">
+    <img id="vermont"         src="img/states/vermont.png"          alt="Vermont"         class="state front" data-abbreviation="vt">
+    <img id="massachusetts"   src="img/states/massachusetts.png"    alt="Massachusetts"   class="state back"  data-abbreviation="ma">
+    <img id="rhode_island"    src="img/states/rhode_island.png"     alt="Rhode Island"    class="state front" data-abbreviation="ri">
+    <img id="connecticut"     src="img/states/connecticut.png"      alt="Connecticut"     class="state front" data-abbreviation="ct">
+    <img id="new_jersey"      src="img/states/new_jersey.png"       alt="New Jersey"      class="state"       data-abbreviation="nj">
+    <img id="delaware"        src="img/states/delaware.png"         alt="Delaware"        class="state front" data-abbreviation="de">
+    <img id="maryland"        src="img/states/maryland.png"         alt="Maryland"        class="state back"  data-abbreviation="md">
+    <img id="west_virginia"   src="img/states/west_virginia.png"    alt="West Virginia"   class="state"       data-abbreviation="wv">
+    <img id="alaska"          src="img/states/alaska.png"           alt="Alaska"          class="state"       data-abbreviation="ak">
+    <img id="hawaii"          src="img/states/hawaii.png"           alt="Hawaii"          class="state front" data-abbreviation="hi">
+
   </div>
 
+  <!-- Top-left state view box & name -->
   <div id="state-display" style="opacity: 0">
     <p id="state-name"></p>
   </div>
 
+  <!-- Main state UI box with stats & graph -->
   <div id="state-info" style="opacity: 0">
+    <div id="info-main">
+      <p style="margin-left: 20px; margin-bottom: 0; font-size: 1.25em">State Parks : </p>
+      <div id="park-list-box">
+        <ul id="park-list" title="I Scroll!" style="margin-top: 0;"></ul>
+      </div>
+      <div id="park-display">
+        <img id="park-graph" class="no-pix" src="" alt="">
+      </div>
+      <p id="park-select">Select A Park!</p>
+    </div>
 
+    <div id="info-graph">
+      <img id="state-graph" class="no-pix" src="" alt="No Park Data for This State!">
+    </div>
   </div>
+
+  <div id="national-data" style="opacity: 1;">
+    <button id="ndata-button">View National Data</button>
+  </div>
+
+  <button id="return-button" style="opacity: 0;"> < Return to Map > </button>
 
 </body>
 
