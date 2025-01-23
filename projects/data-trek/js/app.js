@@ -86,8 +86,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("ndata-button").addEventListener("click", () => {
+    const self = document.getElementById("ndata-button");
+
+    self.style.pointerEvents = "none";
     fadeStates();
     fadeNationalUI();
+
+    setTimeout(() => {
+      self.style.pointerEvents = "all";
+    }, 900);
+
+    if (self.textContent === "< View National Data >") {
+      self.textContent = "< Return to Map >";
+      document.getElementById("interactive-button").style.display = "block";
+      return;
+    }
+    self.textContent = "< View National Data >";
+    document.getElementById("interactive-button").style.display = "none";
+  });
+
+  document.getElementById("year-slider").addEventListener("input", () => {
+    const self = document.getElementById("year-slider");
+    const graph = document.getElementById("nat-ann");
+    const label = document.getElementById("year-label");
+    graph.src = `data/annual/img/${self.value}.png`;
+    label.textContent = `Year: ${self.value}`;
+  });
+
+  document.getElementById("interactive-button").addEventListener("click", () => {
+    const btn = document.getElementById("interactive-button");
+    const otImg = document.getElementById("nat-ot");
+    const annImg = document.getElementById("nat-ann");
+    const slider = document.getElementById("year-slider");
+    const label = document.getElementById("year-label");
+
+    if (btn.textContent === "Static Graph") {
+      btn.textContent = "Interactive Graph";
+      otImg.style.display = "block";
+      annImg.style.display = "none";
+      slider.style.display = "none";
+      label.style.display = "none";
+      return;
+    }
+
+    btn.textContent = "Static Graph";
+    otImg.style.display = "none";
+    annImg.style.display = "block";
+    slider.style.display = "block";
+    label.style.display = "block";
   });
 });
 
@@ -274,7 +320,6 @@ function setupStates() {
       // Load in parks list
       clearList();
       for (let park of stateParks[obj.id]) {
-        console.log(stateParks[obj.id]);
         addToList(park);
       }
 
@@ -293,10 +338,9 @@ function setupStates() {
 
       // Triggered by sim-click
       fadeUI("");
-      setTimeout(() => { fadeStates(obj.id); obj.style.pointerEvents = "all"; }, 900);
+      setTimeout(() => { fadeStates(obj.id); obj.style.pointerEvents = "all"; activeState = ""; }, 900);
       obj.style.top = Math.floor(spaceNS + state.pos[1] * scaleY) + "px";
       obj.style.left = Math.floor(spaceEW + state.pos[0] * scaleX) + "px";
-      activeState = ""
     });
   }
 }
@@ -368,9 +412,11 @@ function capitalizeWords(str) {
 function fadeStates(exclude) {
   const states = document.querySelectorAll(".state");
   const shadow = document.getElementById("map");
-  const natBtn = document.getElementById("national-data");
+  const national = document.getElementById("national-data");
 
-  natBtn.style.opacity = natBtn.style.opacity === "1" ? "0" : "1";
+  if (activeState !== "") {
+    national.style.opacity = national.style.opacity === "0" ? "1" : "0";
+  }
 
   shadow.style.opacity = shadow.style.opacity === "0" ? "1" : "0";
   if (shadow.style.opacity === "0" && shadow.style.visibility !== "hidden") {
@@ -386,6 +432,7 @@ function fadeStates(exclude) {
   states.forEach(state => {
     if (state.id !== exclude) {
       state.style.opacity = state.style.opacity === "0" ? "1" : "0";
+      state.style.pointerEvents = "none";
 
       if (state.style.opacity === "0" && state.style.visibility !== "hidden") {
         setTimeout(() => {
@@ -397,6 +444,7 @@ function fadeStates(exclude) {
       // Ensure that the state becomes visible when opacity is back to 1
       if (state.style.opacity === "1" && state.style.visibility !== "visible") {
         state.style.visibility = "visible";
+        state.style.pointerEvents = "all";
       }
     }
   });
@@ -416,7 +464,17 @@ function fadeUI(text) {
 }
 
 function fadeNationalUI() {
+  const box = document.getElementById('national-box');
+  if (box.style.opacity === "1") {
+    box.style.opacity = "0";
+    setTimeout(() => {
+      box.style.display = "none";
+    }, 900);
+    return;
+  }
 
+  box.style.opacity = "1";
+  box.style.display = "block";
 }
 
 function addToList(itemText) {
