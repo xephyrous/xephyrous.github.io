@@ -340,28 +340,19 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   transition: opacity 0.75s ease;
-  z-index: 0;
 }
 
 #nat-ot {
-  height: 90%;  /* Constrain image to 100% of its parent container's height */
-  width: auto;   /* Adjust width automatically to maintain aspect ratio */
-  object-fit: contain; /* Ensure the image fits within the container */
-  z-index: -1;
+  height: 90%;
+  width: auto;
+  object-fit: contain;
 }
 
 #nat-ann {
-  height: 100%;  /* Constrain image to 100% of its parent container's height */
-  width: auto;   /* Adjust width automatically to maintain aspect ratio */
-  object-fit: contain; /* Ensure the image fits within the container */
-  z-index: -1;
-}
-
-#national-controls {
-  display: flex;
-  flex-direction: row;
+  height: 90%;
+  width: auto;
+  object-fit: contain;
 }
 
 .slider {

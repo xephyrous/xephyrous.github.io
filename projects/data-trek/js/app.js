@@ -66,15 +66,15 @@ let fileList = [
   "acadia_me.png", "arches_ut.png", "badlands_sd.png", "big_bend_tx.png", "biscayne_fl.png",
   "black_canyon_of_the_gunnison_co.png", "bryce_canyon_ut.png", "canyonlands_ut.png", "capitol_reef_ut.png", "carlsbad_caverns_nm.png",
   "channel_islands_ca.png", "congaree_sc.png", "crater_lake_or.png", "cuyahoga_valley_oh.png", "death_valley_ca.png",
-  "denali_np_&_p_ak.png", "dry_tortugas_fl.png", "everglades_fl.png", "gates_of_the_arctic_np_&_p_ak.png", "gateway_arch_mo.png",
-  "glacier_bay_np_&_p_ak.png", "glacier_mt.png", "grand_canyon_az.png", "grand_teton_wy.png", "great_basin_nv.png",
-  "great_sand_dunes_np_&_p_co.png", "great_smoky_mountains_tn.png", "guadalupe_mountains_tx.png", "haleakala_hi.png", "hawaii_volcanoes_hi.png",
-  "hot_springs_ar.png", "indiana_dunes_in.png", "isle_royale_mi.png", "joshua_tree_ca.png", "katmai_np_&_p_ak.png",
-  "kenai_fjords_ak.png", "kings_canyon_ca.png", "kobuk_valley_ak.png", "lake_clark_np_&_p_ak.png", "lassen_volcanic_ca.png",
-  "mammoth_cave_ky.png", "mesa_verde_co.png", "mount_rainier_wa.png", "national_park_of_american_sa_as.png", "new_river_gorge_np_&_p_wv.png",
+  "denali_ak.png", "dry_tortugas_fl.png", "everglades_fl.png", "gates_of_the_arctic_ak.png", "gateway_arch_mo.png",
+  "glacier_bay_ak.png", "glacier_mt.png", "grand_canyon_az.png", "grand_teton_wy.png", "great_basin_nv.png",
+  "great_sand_dunes_co.png", "great_smoky_mountains_tn.png", "guadalupe_mountains_tx.png", "haleakala_hi.png", "hawaii_volcanoes_hi.png",
+  "hot_springs_ar.png", "indiana_dunes_in.png", "isle_royale_mi.png", "joshua_tree_ca.png", "katmai_ak.png",
+  "kenai_fjords_ak.png", "kings_canyon_ca.png", "kobuk_valley_ak.png", "lake_clark_ak.png", "lassen_volcanic_ca.png",
+  "mammoth_cave_ky.png", "mesa_verde_co.png", "mount_rainier_wa.png", "national_park_of_american_sa_as.png", "new_river_gorge_wv.png",
   "north_cascades_wa.png", "olympic_wa.png", "petrified_forest_az.png", "pinnacles_ca.png", "redwood_ca.png",
   "rocky_mountain_co.png", "saguaro_az.png", "sequoia_ca.png", "shenandoah_va.png", "theodore_roosevelt_nd.png",
-  "virgin_islands_vi.png", "voyageurs_mn.png", "white_sands_nm.png", "wind_cave_sd.png", "wrangell-st._elias_np_&_p_ak.png",
+  "virgin_islands_vi.png", "voyageurs_mn.png", "white_sands_nm.png", "wind_cave_sd.png", "wrangell-st._elias_ak.png",
   "yellowstone_wy.png", "yosemite_ca.png", "zion_ut.png"
 ];
 
@@ -483,7 +483,7 @@ function addToList(itemText) {
   const button = document.createElement('button');
 
   let match = itemText.match("^.*(?=_)")[0];
-  button.textContent = match.replace("_", " ").replace(/\b\w/g, (char) => char.toUpperCase());
+  button.textContent = match.replaceAll("_", " ").replace(/\b\w/g, (char) => char.toUpperCase());
   button.style.width = "calc(100% - 20px)";
   button.style.margin = "5px";
 
