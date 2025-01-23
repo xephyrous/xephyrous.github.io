@@ -7,28 +7,56 @@ document.addEventListener('contextmenu', event => event.preventDefault());
 
 // All positions and sizes are measured in image-scale-accurate pixels
 const stateList = [
-  { "name": "washington",   "pos": [17, 0],   "size": [50, 36]    },
-  { "name": "oregon",       "pos": [6, 22],   "size": [58, 48]    },
-  { "name": "california",   "pos": [0, 60],   "size": [58, 104]   },
-  { "name": "nevada",       "pos": [30, 67],  "size": [47, 64]    },
-  { "name": "idaho",        "pos": [54, 9],   "size": [43, 70]    },
-  { "name": "montana",      "pos": [69, 9],   "size": [80, 54]    },
-  { "name": "utah",         "pos": [67, 78],  "size": [38, 47]    },
-  { "name": "arizona",      "pos": [51, 120], "size": [48, 61]    },
-  { "name": "colorado",     "pos": [99, 90],  "size": [54, 41]    },
-  { "name": "new_mexico",   "pos": [91, 126], "size": [53, 60]    },
-  { "name": "wyoming",      "pos": [93, 57],  "size": [52, 39]    },
-  { "name": "north_dakota", "pos": [144, 20], "size": [45, 32]    },
-  { "name": "south_dakota", "pos": [141, 48], "size": [51, 33]    },
-  { "name": "nebraska",     "pos": [141, 74], "size": [57, 31]    },
-  { "name": "kansas",       "pos": [147, 105],"size": [57, 30]    },
-  { "name": "oklahoma",     "pos": [144, 131],"size": [60, 30]    },
-  { "name": "texas",        "pos": [111, 137],"size": [103, 104]  },
-  { "name": "minnesota",    "pos": [185, 22], "size": [53, 51]    },
-  { "name": "iowa",         "pos": [191, 71], "size": [42, 34]    },
-  { "name": "missouri",     "pos": [198, 102], "size": [45, 42]    },
-  { "name": "arkansas",     "pos": [204, 141], "size": [36, 32]    },
-  { "name": "louisiana",    "pos": [210, 172],"size": [46, 36]    },
+  { "name": "washington",   "pos": [17, 0],     "size": [50, 36]    },
+  { "name": "oregon",       "pos": [6, 22],     "size": [58, 48]    },
+  { "name": "california",   "pos": [0, 60],     "size": [58, 104]   },
+  { "name": "nevada",       "pos": [30, 67],    "size": [47, 64]    },
+  { "name": "idaho",        "pos": [54, 9],     "size": [43, 70]    },
+  { "name": "montana",      "pos": [69, 9],     "size": [80, 54]    },
+  { "name": "utah",         "pos": [67, 78],    "size": [38, 47]    },
+  { "name": "arizona",      "pos": [51, 120],   "size": [48, 61]    },
+  { "name": "colorado",     "pos": [99, 90],    "size": [54, 41]    },
+  { "name": "new_mexico",   "pos": [91, 126],   "size": [53, 60]    },
+  { "name": "wyoming",      "pos": [93, 57],    "size": [52, 39]    },
+  { "name": "north_dakota", "pos": [144, 20],   "size": [45, 32]    },
+  { "name": "south_dakota", "pos": [141, 48],   "size": [51, 33]    },
+  { "name": "nebraska",     "pos": [141, 74],   "size": [57, 31]    },
+  { "name": "kansas",       "pos": [147, 105],  "size": [57, 30]    },
+  { "name": "oklahoma",     "pos": [144, 131],  "size": [60, 30]    },
+  { "name": "texas",        "pos": [111, 137],  "size": [103, 104]  },
+  { "name": "minnesota",    "pos": [185, 22],   "size": [53, 51]    },
+  { "name": "iowa",         "pos": [191, 71],   "size": [42, 34]    },
+  { "name": "missouri",     "pos": [198, 102],  "size": [45, 42]    },
+  { "name": "arkansas",     "pos": [204, 141],  "size": [36, 32]    },
+  { "name": "louisiana",    "pos": [210, 172],  "size": [46, 36]    },
+  { "name": "wisconsin",    "pos": [215, 42],   "size": [43, 42]    },
+  { "name": "illinois",     "pos": [228, 81],   "size": [28, 51]    },
+  { "name": "kentucky",     "pos": [243, 108],  "size": [54, 30]    },
+  { "name": "tennessee",    "pos": [236, 127],  "size": [63, 23]    },
+  { "name": "mississippi",  "pos": [228, 146],  "size": [29, 50]    },
+  { "name": "indiana",      "pos": [252, 87],   "size": [22, 36]    },
+  { "name": "michigan",     "pos": [234, 34],   "size": [56, 57]    },
+  { "name": "alabama",      "pos": [254, 145],  "size": [28, 50]    },
+  { "name": "ohio",         "pos": [273, 79],   "size": [29, 33]    },
+  { "name": "georgia",      "pos": [273, 143],  "size": [40, 42]    },
+  { "name": "florida",      "pos": [261, 179],  "size": [70, 54]    },
+  { "name": "new_york",     "pos": [304, 42],   "size": [58, 41]    },
+  { "name": "pennsylvania",  "pos": [302, 74],  "size": [41, 23]    },
+  { "name": "virginia",  "pos": [295, 102],  "size": [52, 27]    },
+  { "name": "north_carolina",  "pos": [286, 122],  "size": [61, 28]    },
+  { "name": "south_carolina",  "pos": [289, 140],  "size": [43, 34]    },
+  { "name": "maine",  "pos": [356, 11],  "size": [28, 43]    },
+  { "name": "new_hampshire",  "pos": [351, 33],  "size": [15, 28]    },
+  { "name": "vermont",  "pos": [343, 38],  "size": [14, 26]    },
+  { "name": "massachusetts",  "pos": [349, 57],  "size": [28, 15]    },
+  { "name": "rhode_island",  "pos": [362, 65],  "size": [7, 8]    },
+  { "name": "connecticut",  "pos": [349, 66],  "size": [15, 10]    },
+  { "name": "new_jersey",  "pos": [340, 78],  "size": [13, 22]    },
+  { "name": "delaware",  "pos": [337, 95],  "size": [13, 14]    },
+  { "name": "maryland",  "pos": [311, 93],  "size": [38, 21]    },
+  { "name": "west_virginia",  "pos": [291, 89],  "size": [24, 33]    },
+  { "name": "alaska",  "pos": [10, 177],  "size": [78, 66]    },
+  { "name": "hawaii",  "pos": [96, 208],  "size": [47, 34]    },
 ];
 
 /*
@@ -174,23 +202,41 @@ function setupStates() {
     const obj = document.getElementById(state.name);
     obj.title = capitalizeWords(state.name);
 
-    obj.style.position = "absolute"; // Ensure absolute positioning
+    obj.style.position = "absolute";
     obj.style.transformOrigin = "top left";
 
     // Apply flooring only to pixel offsets
     obj.style.top = Math.floor(spaceNS + state.pos[1] * scaleY) + "px";
     obj.style.left = Math.floor(spaceEW + state.pos[0] * scaleX) + "px";
 
-    // Use exact scaling for size (no flooring to avoid shrinking)
     obj.style.width = (state.size[0] * scaleX) + "px";
     obj.style.height = (state.size[1] * scaleY) + "px";
 
     obj.style.transformOrigin = "center center";
 
     obj.addEventListener("click", () => {
-      fadeStates(obj.id)
-      obj.style.top = "0px";
-      obj.style.left = "0px";
+      const targetRect = document.getElementById("state-display").getBoundingClientRect();
+      const parentRect = document.getElementsByClassName("map")[0].getBoundingClientRect();
+
+      setTimeout(() => {
+        fadeUI(obj.alt);
+      }, 900);
+
+      if (obj.style.left !== "0px") {
+        fadeStates(obj.id)
+        obj.style.pointerEvents = "none";
+        obj.style.top = `${targetRect.top - parentRect.top + (targetRect.height / 2) - (obj.height / 2) - 50}px`;
+        obj.style.left = `${targetRect.left - parentRect.left + (targetRect.width / 2) - (obj.width / 2)}px`;
+        return;
+      }
+
+      // Triggered by sim-click
+      setTimeout(() => { fadeStates(obj.id) }, 1000);
+      obj.style.pointerEvents = "all";
+      obj.style.top = Math.floor(spaceNS + state.pos[1] * scaleY) + "px";
+      obj.style.left = Math.floor(spaceEW + state.pos[0] * scaleX) + "px";
+      obj.style.width = `${state.size[0] * scaleX}px`;
+      obj.style.height = `${state.size[0] * scaleX}px`;
     });
   }
 }
@@ -264,11 +310,28 @@ function fadeStates(exclude) {
   const shadow = document.getElementById("map");
 
   shadow.style.opacity = shadow.style.opacity === "0" ? "1" : "0";
-
   states.forEach(state => {
-    console.log(state.id);
     if (state.id !== exclude) {
       state.style.opacity = state.style.opacity === "0" ? "1" : "0";
+
+      setTimeout(() => {
+        state.style.visibility = state.style.visibility === "hidden" ? "visible" : "hidden";
+      }, 1000);
     }
   });
+
+  setTimeout(() => {
+    shadow.style.visibility = shadow.style.visibility === "hidden" ? "visible" : "hidden";
+  }, 1000);
+}
+
+function fadeUI(text) {
+  const display = document.getElementById("state-display");
+  const info = document.getElementById("state-info");
+  const name = document.getElementById("state-name");
+
+  display.style.opacity = display.style.opacity === "1" ? "0" : "1";
+  info.style.opacity = info.style.opacity === "1" ? "0" : "1";
+  name.style.opacity = name.style.opacity === "1" ? "0" : "1";
+  name.textContent = text;
 }

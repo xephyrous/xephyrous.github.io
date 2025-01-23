@@ -34,7 +34,7 @@ html, body {
   font-weight: normal;
   font-size: 1.15em;
   overflow: hidden;
-  background-color: #4F7942;
+  background-color: #254025;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -113,11 +113,13 @@ canvas {
   width: 100%;
   height: 100%;
   opacity: 1;
+  visibility: visible;
   transition: opacity 0.75s ease;
 }
 
 .state {
   opacity: 1;
+  z-index: 2;
   position: absolute;
   height: auto;
   transition: transform 0.3s ease, top 1s ease-in-out, left 1s ease-in-out, opacity 0.75s ease;
@@ -134,7 +136,7 @@ canvas {
   transition: transform 0.1s ease;
 }
 
-.back { z-index: 0; }
+.back { z-index: 1; }
 .middle { z-index: 11; }
 .front { z-index: 12; }
 
@@ -164,4 +166,48 @@ canvas {
   right: -10px;
   width: 30px;
   height: 100%;
+}
+
+#state-info {
+  position: absolute;
+  top: 40px;
+  left: calc(60px + max(17vw, 20vh));
+  width: calc(100% - max(17vw, 20vh) - 100px);
+  height: calc(100% - 80px);
+  border: 4px black dashed;
+}
+
+#state-display {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: max(17vw, 20vh);
+  height: calc(max(17vw, 20vh) + 50px);
+  border: 4px black dashed;
+  transition: opacity .75s ease;
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically */
+}
+
+#state-name {
+  width: max(25vw, 35vh);
+  height: 50px;
+  color: white;
+  position: absolute;
+  bottom: -30px;
+  transition: opacity .75s ease;
+  text-shadow: -2px 2px 0 #000;
+  margin-top: auto;
+  text-align: center;
+  width: 100%; /* Ensures the text takes up the full width of the container */
+  height: 100%; /* Ensures the text takes up the full height of the container */
+  max-height: 50px; /* Prevents the text from exceeding 50px in height */
+  overflow: hidden; /* Avoids text overflow */
+  white-space: nowrap; /* Prevents text wrapping */
+  font-size: calc(1vw + 1vh); /* Adjusts text size based on container width */
+}
+
+#state-info {
+  z-index: 0;
 }
