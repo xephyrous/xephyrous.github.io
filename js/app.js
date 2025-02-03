@@ -197,21 +197,23 @@ async function loadGradleData() {
       // Build gradleStats
       let index = 1;
       for (let i = 0; i < gradleData.length; i += 2) {
-        // Doubles as validation for the file layout, syntax errors are thrown here
+        // Validate file layout
         if (gradleData[i] && gradleData[i + 1]) {
           gradleStats[gradleData[i]] = [];
 
+          // Process each entry for the category
           for (let j = index; j < index + Number(gradleData[i + 1]); j++) {
             const splitLine = lines[j].split(",");
             gradleStats[gradleData[i]].push(splitLine);
+            console.log(splitLine);  // You can see the data being processed here
           }
 
+          // Update the index for the next category
           index += Number(gradleData[i + 1]);
-          return;
+        } else {
+          // Display error for invalid entry in gradle_health.txt
+          console.error("Invalid Entry in 'gradle_health.txt'!");
         }
-
-        // Display error here
-        console.error("Invalid Entry in 'gradle_health.txt'!")
       }
     })
     .catch((e) => console.error(e));
@@ -219,7 +221,7 @@ async function loadGradleData() {
   console.log(gradleStats);
 
   let graphData = [["Type", "Count"]];
-  for (let i = 2; i < gradleData.length; i += 2) {
+  for (let i = 0; i < gradleData.length; i += 2) {
     if (gradleData[i] && gradleData[i + 1]) {
       graphData.push([gradleData[i], Number(gradleData[i + 1])])
     }
@@ -243,13 +245,78 @@ async function loadGradleData() {
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
     chart.draw(data, options);
+
+    google.visualization.events.addListener(chart, 'select', function () {
+      const selection = chart.getSelection();
+
+      if (selection.length > 0) {
+        const selectedItem = selection[0];
+        if (selectedItem.row !== null) {
+          const category = data.getValue(selectedItem.row, 0); // Category name
+          const value = data.getValue(selectedItem.row, 1); // Value
+          let boxes = document.querySelectorAll(".hidden-content-box");
+          let target = document.getElementById(`${category}-box`);
+
+          // Hide displayed box
+          boxes.forEach(box => {
+            if (box !== target) {
+              box.style.opacity = "0";
+              setTimeout(() => {
+                box.style.display = "none";
+              }, 500);
+            }
+          });
+
+          // Display selected box
+          setTimeout(() => {
+            target.style.display = "block";
+            target.style.opacity = "0";
+
+            setTimeout(() => {
+              target.style.opacity = "1";
+              document.getElementById("gradle-stats-title").innerText = capitalize(category);
+            }, 10);
+          }, 500);
+        }
+      }
+    });
   }
 
   // Setup & update stats
   for (let i = 0; i < gradleData.length; i += 2) {
     if (gradleData[i] && gradleData[i + 1]) {
-      const currRow = document.getElementById(`${gradleData[i]}-row`)
-      // Load in data from gradleStats object
+      const currRow = document.getElementById(`${gradleData[i]}-box`).children[0];
+      const data = gradleStats[gradleData[i]];
+
+      for (let j = 0; j < data.length; j++) {
+        const currData = data[j];
+        const button = document.createElement("button");
+        console.log(` > ${currData}`);
+        let urlIdx;
+
+        button.classList.add("asciiButton");
+        button.style.margin = "5px";
+        if (currData.length === 3) { // Plugin
+          button.textContent = `${currData[0]} Version ${currData[1]}`;
+          urlIdx = 2;
+        } else if (currData.length === 2) { // Repository
+          button.textContent = `${currData[0]}`;
+          urlIdx = 1;
+        } else { // Dependencies
+          button.textContent = currData[0];
+          urlIdx = 1;
+        }
+        button.onclick = () => {
+          if (currData[urlIdx] === "NONE") { return; }
+          window.open(currData[urlIdx], '_blank').focus();
+        };
+
+        currRow.appendChild(button);
+      }
     }
   }
+}
+
+function capitalize(val) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }

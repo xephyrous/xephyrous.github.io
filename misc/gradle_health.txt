@@ -1,20 +1,20 @@
 plugins,3,repositories,6,dependencies,8,tasks,1,configurations,1
-jvm,1.9.20
-org.jetbrains.compose,1.5.11
-org.jetbrains.dokka,1.9.10
-google
-mavenCentral
-https://maven.pkg.jetbrains.space/public/p/compose/dev
-https://dl.bintray.com/kotlin/dokka
-https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven
-https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect
-compose.desktop.currentOs
-compose.ui
-compose.material
-compose.material3
-kotlin.reflect
-org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3
-org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3
-com.mohamedrejeb.dnd:compose-dnd:0.2.0
-tasks.dokkaHtml.configure
-compose.desktop
+jvm,1.9.20,https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm/1.9.20
+org.jetbrains.compose,1.5.11,https://plugins.gradle.org/plugin/org.jetbrains.compose/1.5.11
+org.jetbrains.dokka,1.9.10,https://plugins.gradle.org/plugin/org.jetbrains.dokka/1.9.10
+Google,https://maven.google.com/
+Maven Central Repo,https://repo.maven.apache.org/maven2/
+Compose Repo,https://maven.pkg.jetbrains.space/public/p/compose/dev
+Dokka Repo,https://dl.bintray.com/kotlin/dokka
+Kotlin X Repo,https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven
+Kotlin Reflect Repo,https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect
+compose.desktop.currentOs,https://mvnrepository.com/artifact/org.jetbrains.compose.desktop/desktop
+compose.ui,https://mvnrepository.com/artifact/androidx.compose.ui/ui
+compose.material,https://mvnrepository.com/artifact/androidx.compose.material/material
+compose.material3,https://mvnrepository.com/artifact/androidx.compose.material3/material3
+kotlin.reflect,https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect
+org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3,https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core/1.7.3
+org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.7.3,https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-swing/1.7.3
+com.mohamedrejeb.dnd:compose-dnd:0.2.0,https://mvnrepository.com/artifact/com.mohamedrejeb.dnd/compose-dnd-js/0.2.0
+tasks.dokkaHtml.configure,NONE
+compose.desktop,NONE

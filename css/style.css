@@ -153,6 +153,18 @@ input:focus{
   width: 100%;
 }
 
+.hidden-content-box {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
+  margin: 15px;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 #logo-padding {
   position: relative;
   height: 250px;
@@ -194,6 +206,7 @@ input:focus{
 #gradle-health {
   margin-top: 10px;
   width: 50%;
+  min-height: 50%;
   text-align: center;
   display: flex;
   flex-direction: column;
