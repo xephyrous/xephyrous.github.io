@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title></title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/baseStyle.css">
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -27,25 +28,26 @@
 </head>
 
 <body onload="
-initASCIIButtons();
-initStars();
+  initASCIIButtons();
+  initStars();
 ">
   <div class="starryBackground"></div>
 
-  <div style="z-index: 100">
-    <div class="centerHoriz mainLogo inner">
-      <pre id="logo"  style="color: #e5d37e">
+  <div class="center-flex">
+    <!-- Main Title -->
+    <div id="logo-padding">
+      <div>
+        <pre id="logo">
 ██   ██ ███████ ██████  ██   ██ ██    ██ ██████   ██████  ██    ██ ███████
  ██ ██  ██      ██   ██ ██   ██  ██  ██  ██   ██ ██    ██ ██    ██ ██
   ███   █████   ██████  ███████   ████   ██████  ██    ██ ██    ██ ███████
  ██ ██  ██      ██      ██   ██    ██    ██   ██ ██    ██ ██    ██      ██
 ██   ██ ███████ ██      ██   ██    ██    ██   ██  ██████   ██████  ███████
+        </pre>
+      </div>
 
-      </pre>
-    </div>
-
-      <div class="centerHoriz mainLogo inner">
-        <pre style="color: #7d7345">
+      <div>
+        <pre id="logo-shadow">
    ╗    ╗       ╗      ╗   ╗    ╗  ╗     ╗      ╗        ╗   ╗     ╗       ╗
  ╚  ╗  ╔╝  ╔════╝  ╔══  ╗  ║    ║╚  ╗   ╔╝  ╔══  ╗  ╔═══  ╗  ║     ║  ╔════╝
   ╚   ╔╝      ╗        ╔╝       ║ ╚    ╔╝       ╔╝  ║     ║  ║     ║       ╗
@@ -55,28 +57,32 @@ initStars();
         </pre>
       </div>
 
-    <div class="centerHoriz mainLogo inner" style="top: 110px">
-      <pre style="color: #e5d37e; font-size: .75em">
+      <!-- Sub-Logo -->
+      <div>
+        <pre id="sub-logo">
   ___              _                        _
  |   \ _____ _____| |___ _ __ _ __  ___ _ _| |_
  | |) / -_) V / -_) / _ \ '_ \ '  \/ -_) ' \  _|
  |___/\___|\_/\___|_\___/ .__/_|_|_\___|_||_\__|
                         |_|
-      </pre>
+        </pre>
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div>
+      <span style="font-family: 'Fira Code', monospace; color: #e5d37e">
+        ∷
+      <input type="button" class="asciiButton rowButton" onclick="location.href='pages/projects.html'" value="[ PROJECTS ]"/>
+      <input type="button" class="asciiButton rowButton" onclick="location.href='pages/members.html'" value="[ MEMBERS ]"/>
+      <input type="button" class="asciiButton rowButton" onclick="location.href='pages/upcoming.html'" value="[ UPCOMING ]"/>
+      <input type="button" class="asciiButton rowButton" onclick="location.href='pages/secrets.html'" value="[ SECRETS ]"/>
+        ∷
+      </span>
     </div>
   </div>
 
-  <div class="centerHoriz inner" style="padding-top: 230px">
-    <span style="font-family: 'Fira Code', monospace; color: #e5d37e">
-      ∷
-    <input type="button" class="asciiButton rowButton" onclick="location.href='pages/projects.html'" value="[ PROJECTS ]"/>
-    <input type="button" class="asciiButton rowButton" onclick="location.href='pages/members.html'" value="[ MEMBERS ]"/>
-    <input type="button" class="asciiButton rowButton" onclick="location.href='pages/upcoming.html'" value="[ UPCOMING ]"/>
-    <input type="button" class="asciiButton rowButton" onclick="location.href='pages/secrets.html'" value="[ SECRETS ]"/>
-      ∷
-    </span>
-  </div>
-
+  <!-- Terminal Input -->
   <label class="terminalTextBold locationBox">
     ]><input id="locationInput" class="terminalInput terminalTextBold" type="text" onsubmit="execCommand(this.value)" value=""/>
   </label>

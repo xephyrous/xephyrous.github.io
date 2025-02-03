@@ -180,3 +180,76 @@ function loadProjects(container) {
       console.error('Error Handling projectSettings.json:', error);
     });
 }
+
+async function loadGradleData() {
+  // Setup chart
+  google.charts.load('current', {'packages': ['corechart']});
+
+  // Read in gradle health data
+  let gradleData = [];
+  let gradleStats = {};
+  await fetch("../misc/gradle_health.txt")
+    .then(async (res) => await res.text())
+    .then((text) => {
+      const lines = text.split("\n");
+      gradleData = lines[0].split(",");
+
+      // Build gradleStats
+      let index = 1;
+      for (let i = 0; i < gradleData.length; i += 2) {
+        // Doubles as validation for the file layout, syntax errors are thrown here
+        if (gradleData[i] && gradleData[i + 1]) {
+          gradleStats[gradleData[i]] = [];
+
+          for (let j = index; j < index + Number(gradleData[i + 1]); j++) {
+            const splitLine = lines[j].split(",");
+            gradleStats[gradleData[i]].push(splitLine);
+          }
+
+          index += Number(gradleData[i + 1]);
+          return;
+        }
+
+        // Display error here
+        console.error("Invalid Entry in 'gradle_health.txt'!")
+      }
+    })
+    .catch((e) => console.error(e));
+
+  console.log(gradleStats);
+
+  let graphData = [["Type", "Count"]];
+  for (let i = 2; i < gradleData.length; i += 2) {
+    if (gradleData[i] && gradleData[i + 1]) {
+      graphData.push([gradleData[i], Number(gradleData[i + 1])])
+    }
+  }
+
+  // Draw pie chart
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable(graphData);
+
+    var options = {
+      width: 400,
+      height: 240,
+      colors: ['#e5d37e', '#e5d37e', '#e5d37e', '#e5d37e', '#e5d37e'],
+      legend: "none",
+      backgroundColor: "#2d2a2e",
+      fontName: "Fira Code"
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+
+  // Setup & update stats
+  for (let i = 0; i < gradleData.length; i += 2) {
+    if (gradleData[i] && gradleData[i + 1]) {
+      const currRow = document.getElementById(`${gradleData[i]}-row`)
+      // Load in data from gradleStats object
+    }
+  }
+}
