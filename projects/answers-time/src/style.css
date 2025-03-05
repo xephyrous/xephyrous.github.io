@@ -45,7 +45,7 @@ html, body {
     width: calc(100%);
     height: calc(100%);
 
-    background-image: url('../public/AnswersTimeClock.png');
+    background-image: url('AnswersTimeClock.png');
     background-position: center center;
     background-repeat: repeat;
     background-size: 20em;

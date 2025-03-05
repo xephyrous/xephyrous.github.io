@@ -19,7 +19,7 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="window-body">
             <div class="center-fill">
-                <img id="logo" class="img-border" style="z-index: 20" src="../public/ANSWERS_TIME_BANNER.png" alt="Answers Time Banner!">
+                <img id="logo" class="img-border" style="z-index: 20" src="ANSWERS_TIME_BANNER.png" alt="Answers Time Banner!">
             </div>
             
             <div class="window" id="ask-jake-window">
@@ -32,7 +32,7 @@ document.querySelector('#app').innerHTML = `
                     </div>
                 </div>
                 <div class="window-body">
-                    <img id="ask-jake-button" src="../public/button_n.png" alt="Ask Jake Button">
+                    <img id="ask-jake-button" src="button_n.png" alt="Ask Jake Button">
                 </div>
             </div>
             

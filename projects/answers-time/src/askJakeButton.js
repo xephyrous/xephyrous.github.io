@@ -8,20 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     askJakeButton.addEventListener("mouseover", () => {
         if (askButtonState === 0) {
-            askJakeButton.src = "../public/button_hover.png";
+            askJakeButton.src = "button_hover.png";
             askButtonState = 1;
         }
     });
 
     askJakeButton.addEventListener("mousedown", () => {
         if (askButtonState === 1) {
-            askJakeButton.src = "../public/button_press.png";
+            askJakeButton.src = "button_press.png";
             askButtonState = 2;
             askJake();
 
             setTimeout(() => {
                 if (askButtonState === 2) {
-                    askJakeButton.src = "../public/button_hover.png";
+                    askJakeButton.src = "button_hover.png";
                     askButtonState = 1;
                 }
             }, 500);
@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     askJakeButton.addEventListener("mouseout", () => {
         if (askButtonState === 2) {
             setTimeout(() => {
-                askJakeButton.src = "../public/button_n.png";
+                askJakeButton.src = "button_n.png";
                 askButtonState = 0;
             }, 500);
         } else if (askButtonState === 1) {
-            askJakeButton.src = "../public/button_n.png";
+            askJakeButton.src = "button_n.png";
             askButtonState = 0;
         }
     });
