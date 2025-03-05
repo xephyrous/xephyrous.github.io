@@ -13,6 +13,13 @@
       "image": "win_tree.png",
       "project": "data-trek",
       "entrypoint": "index.html"
+    },
+    {
+      "name": "Answers Time!",
+      "description": "The official website for the Answers Time YouTube channel!",
+      "image": "ANSWERS_TIME_BANNER.png",
+      "project": "answers-time",
+      "entrypoint": "index.html"
     }
   ]
 }
