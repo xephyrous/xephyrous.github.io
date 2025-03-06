@@ -10,7 +10,7 @@ import{l as i}from"./firebase-CzOzUED8.js";document.querySelector("#app").innerH
         </div>
         <div class="window-body">
             <div class="center-fill">
-                <img id="logo" style="z-index: 20" src="../public/log_in.gif" alt="Log In Banner!">
+                <img id="logo" style="z-index: 20" src="log_in.gif" alt="Log In Banner!">
             </div>
             
             <div class="center-fill">
