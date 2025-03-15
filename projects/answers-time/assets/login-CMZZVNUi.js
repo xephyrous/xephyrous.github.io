@@ -1,4 +1,4 @@
-import{l as i}from"./firebase-CzOzUED8.js";document.querySelector("#app").innerHTML=`
+import{l as e}from"./firebase-D-DrtZvu.js";document.querySelector("#app").innerHTML=`
     <div id="main-window" class="window" style="width: 100%; height: 100%">
         <div class="title-bar" style="position: relative; z-index: 10">
             <div class="title-bar-text">Login!</div>
@@ -35,4 +35,4 @@ import{l as i}from"./firebase-CzOzUED8.js";document.querySelector("#app").innerH
             </div>
         </div>
     </div>
-`;document.getElementById("login-button").addEventListener("click",()=>{i(document.getElementById("username_field").value,document.getElementById("password_field").value).then(t=>{t&&(window.location="/projects/answers-time/admin-panel/index.html")})});
+`;document.getElementById("login-button").addEventListener("click",()=>{e(document.getElementById("username_field").value,document.getElementById("password_field").value).then(t=>{t&&setTimeout(()=>{window.location="/projects/answers-time/admin-panel/index.html"},100)})});
