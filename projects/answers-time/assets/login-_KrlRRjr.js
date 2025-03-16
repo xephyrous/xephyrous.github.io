@@ -1,4 +1,4 @@
-import{l as e}from"./firebase-CpPwWOzo.js";document.querySelector("#app").innerHTML=`
+import{l as i}from"./firebase-BMkLKdpF.js";document.querySelector("#app").innerHTML=`
     <div id="main-window" class="window" style="width: 100%; height: 100%">
         <div class="title-bar" style="position: relative; z-index: 10">
             <div class="title-bar-text">Login!</div>
@@ -33,6 +33,23 @@ import{l as e}from"./firebase-CpPwWOzo.js";document.querySelector("#app").innerH
                     </div>
                 </div>
             </div>
+            
+            <div class="center-fill alert-container" style="height: 100%">
+                <div class="window alert-modal" id="alert-window" style="max-width: 30vw; max-height: 30vh; display: none">
+                    <div class="title-bar">
+                        <div class="title-bar-text" id="alert-title"></div>
+                        <div class="title-bar-controls">
+                            <button aria-label="Minimize"></button>
+                            <button aria-label="Restore"></button>
+                            <button aria-label="Close" onclick="document.getElementById('alert-window').style.display = 'none'"></bu tton>
+                        </div>
+                    </div>
+                    <div class="window-body" style="display: flex; flex-direction: row; overflow-y: auto; max-height: 23vh">
+                        <img src="" alt="Alert Icon" id="alert-icon" style="width: 25px; height: 25px; margin-left: 5px; position: fixed">
+                        <p id="alert-text" style="margin-left: 35px; font-weight: bold"></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-`;document.getElementById("login-button").addEventListener("click",()=>{e(document.getElementById("username_field").value,document.getElementById("password_field").value).then(t=>{t&&setTimeout(()=>{window.location="/projects/answers-time/admin-panel/index.html"},100)})});
+`;document.getElementById("login-button").addEventListener("click",()=>{i(document.getElementById("username_field").value,document.getElementById("password_field").value).then(t=>{t&&setTimeout(()=>{window.location="/projects/answers-time/admin-panel/index.html"},100)})});
