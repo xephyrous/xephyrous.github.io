@@ -14,7 +14,7 @@ import{l as i}from"./firebase-BMkLKdpF.js";document.querySelector("#app").innerH
             </div>
             
             <div class="center-fill">
-                <div class="window" style="pos">
+                <div class="window" style="z-index: 1050">
                     <div class="title-bar" style="position: relative; z-index: 10">
                         <div class="title-bar-text" style="width: 100%; text-align: center">ᓚᘏᗢ</div>
                     </div>
