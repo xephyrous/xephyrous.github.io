@@ -1,4 +1,4 @@
-import{c as f,b as v,d as w,A as E,g as q}from"./firebase-DpQf9T_I.js";import{a as B}from"./youtube-Bniyde3c.js";f();let o=[],p=!1,i=-1,a=!1;const u={ADD:"../icons/add.png",REMOVE:"../icons/remove.png",NONE:""};document.querySelector("#app").innerHTML=`
+import{c as f,b as v,d as w,A as E,g as q}from"./firebase-D7COpEWf.js";import{a as B}from"./youtube-Bniyde3c.js";f();let o=[],p=!1,i=-1,a=!1;const u={ADD:"../icons/add.png",REMOVE:"../icons/remove.png",NONE:""};document.querySelector("#app").innerHTML=`
     <div id="main-window" class="window" style="width: 100%; height: 100%; display: none">
         <div class="title-bar" style="position: relative; z-index: 10">
             <div class="title-bar-text">Mr Answers Himself!</div>
