@@ -14,7 +14,7 @@ import{d as c,a as m}from"./firebase-D0udrlzt.js";import{g as b}from"./youtube-B
             </div>
             
             <div style="margin-top: 20px; align-items: center; width: 100%; justify-content: center; display: flex">
-                <div class="window" style="width: 50%; max-height: 70vh; height: auto">
+                <div class="window" style="width: 50%; max-height: 70vh; height: auto; z-index: 1050">
                     <div class="title-bar" style="position: relative; z-index: 10">
                         <div class="title-bar-text" id="video-title"></div>
                     </div>
@@ -61,4 +61,4 @@ import{d as c,a as m}from"./firebase-D0udrlzt.js";import{g as b}from"./youtube-B
             <elevenlabs-convai agent-id="5pnMP6M3rGgecFTd8oIJ"></elevenlabs-convai><script src="https://elevenlabs.io/convai-widget/index.js" async type="text/javascript"><\/script>
         </div>
     </div>
-`;document.addEventListener("DOMContentLoaded",async()=>{y();const e=await b();document.getElementById("video-title").innerText=e.title,document.getElementById("video-thumbnail").src=e.thumbnail,document.getElementById("video-thumbnail").setAttribute("data-video-id",e.videoId)});document.getElementById("video-thumbnail").addEventListener("click",()=>{const e=document.getElementById("video-thumbnail").getAttribute("data-video-id");window.open(`https://www.youtube.com/watch?v=${e}`,"_blank")});document.getElementById("login-gentleman").addEventListener("click",async()=>{if(document.getElementById("login-gentleman").getBoundingClientRect().left<229){console.log(document.getElementById("login-gentleman").getBoundingClientRect().left);return}setTimeout(()=>{window.location.href="login/index.html"},500)});
+`;document.addEventListener("DOMContentLoaded",async()=>{y();const e=await b();document.getElementById("video-title").innerText=e.title,document.getElementById("video-thumbnail").src=e.thumbnail,document.getElementById("video-thumbnail").setAttribute("data-video-id",e.videoId)});document.getElementById("video-thumbnail").addEventListener("click",()=>{const e=document.getElementById("video-thumbnail").getAttribute("data-video-id");window.open(`https://www.youtube.com/watch?v=${e}`,"_blank")});document.getElementById("login-gentleman").addEventListener("click",async()=>{if(document.getElementById("login-gentleman").getBoundingClientRect().left<229){console.log(document.getElementById("login-gentleman").getBoundingClientRect().left);return}setTimeout(()=>{window.location.href="login.html"},500)});
