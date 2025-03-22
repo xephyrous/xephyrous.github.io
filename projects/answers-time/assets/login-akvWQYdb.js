@@ -1,4 +1,4 @@
-import{l as i}from"./firebase-D0udrlzt.js";document.querySelector("#app").innerHTML=`
+import{l as i}from"./firebase-DX27Myd8.js";document.querySelector("#app").innerHTML=`
     <div id="main-window" class="window" style="width: 100%; height: 100%">
         <div class="title-bar" style="position: relative; z-index: 10">
             <div class="title-bar-text">Login!</div>
